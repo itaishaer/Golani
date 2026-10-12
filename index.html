@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>כלי ההדרכה — בא"ח גולני</title>
+<meta name="theme-color" content="#F3F4EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15170F" media="(prefers-color-scheme: dark)">
+<meta name="description" content="מרכז כלי ההדרכה והפיקוד של בא&quot;ח גולני">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="בא&quot;ח גולני">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Assistant:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Layout: launcher hub — sticky header, featured carousel, recent strip, filter tabs, tile grid, detail sheet */
+:root{
+  --bg:#F3F4EE; --card:#FFFFFF; --ink:#22241C; --ink-2:#5F6257; --ink-3:#979A8D;
+  --line:#E0E2D8; --fill:#E7E9E0; --brown:#6B4423; --yellow:#E0B43A; --link:#6B4423;
+  --scrim:rgba(20,22,15,.32); --toast-bg:rgba(34,36,28,.92); --toast-ink:#F3F4EE;
+  --head:rgba(243,244,238,.84); --clear:#B9BBB0;
+  --f-display:"Secular One","Assistant",Arial,sans-serif;
+  --f-body:"Assistant","Segoe UI",Arial,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+  /* tool tones */
+  --olive-bg:#DCE3CC; --olive-ink:#3C4A22; --olive-acc:#8A9A4B; --olive-soft:#EEF2E4;
+  --earth-bg:#E9DCCB; --earth-ink:#5A3A1E; --earth-acc:#A9713A; --earth-soft:#F5EEE5;
+  --mustard-bg:#F3E3B0; --mustard-ink:#5E4A10; --mustard-acc:#C99A1F; --mustard-soft:#FAF2D9;
+  --sand-bg:#E8E3D6; --sand-ink:#4A4234; --sand-acc:#9C8B67; --sand-soft:#F5F2EB;
+  --rust-bg:#F0D7CB; --rust-ink:#6E2F1C; --rust-acc:#C0603C; --rust-soft:#F8EAE3;
+  --moss-bg:#D3DFD5; --moss-ink:#2B4535; --moss-acc:#5E8A6C; --moss-soft:#E8F0EA;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#15170F; --card:#1D2016; --ink:#EDEEE6; --ink-2:#A9AC9F; --ink-3:#74776B;
+  --line:#2C2F25; --fill:#23261C; --brown:#C9925A; --yellow:#E0B43A; --link:#E0B43A;
+  --scrim:rgba(0,0,0,.5); --toast-bg:rgba(237,238,230,.94); --toast-ink:#15170F;
+  --head:rgba(21,23,15,.84); --clear:#55584D;
+  --olive-bg:#2E3520; --olive-ink:#DDE6C4; --olive-acc:#9DAE5A; --olive-soft:#39422A;
+  --earth-bg:#3A2B1E; --earth-ink:#EBD9C3; --earth-acc:#C08A50; --earth-soft:#473626;
+  --mustard-bg:#3D3315; --mustard-ink:#F3DE9C; --mustard-acc:#D6A92C; --mustard-soft:#4A3F1C;
+  --sand-bg:#34302A; --sand-ink:#E6DECF; --sand-acc:#B0A07C; --sand-soft:#403B33;
+  --rust-bg:#3D241B; --rust-ink:#F1CDBD; --rust-acc:#D27652; --rust-soft:#4A2D23;
+  --moss-bg:#1F3027; --moss-ink:#CFE2D4; --moss-acc:#6E9D7D; --moss-soft:#293D31;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#15170F; --card:#1D2016; --ink:#EDEEE6; --ink-2:#A9AC9F; --ink-3:#74776B;
+  --line:#2C2F25; --fill:#23261C; --brown:#C9925A; --yellow:#E0B43A; --link:#E0B43A;
+  --scrim:rgba(0,0,0,.5); --toast-bg:rgba(237,238,230,.94); --toast-ink:#15170F;
+  --head:rgba(21,23,15,.84); --clear:#55584D;
+  --olive-bg:#2E3520; --olive-ink:#DDE6C4; --olive-acc:#9DAE5A; --olive-soft:#39422A;
+  --earth-bg:#3A2B1E; --earth-ink:#EBD9C3; --earth-acc:#C08A50; --earth-soft:#473626;
+  --mustard-bg:#3D3315; --mustard-ink:#F3DE9C; --mustard-acc:#D6A92C; --mustard-soft:#4A3F1C;
+  --sand-bg:#34302A; --sand-ink:#E6DECF; --sand-acc:#B0A07C; --sand-soft:#403B33;
+  --rust-bg:#3D241B; --rust-ink:#F1CDBD; --rust-acc:#D27652; --rust-soft:#4A2D23;
+  --moss-bg:#1F3027; --moss-ink:#CFE2D4; --moss-acc:#6E9D7D; --moss-soft:#293D31;
+  color-scheme:dark;
+}
+.tone-olive{--tbg:var(--olive-bg);--tink:var(--olive-ink);--tacc:var(--olive-acc);--tsoft:var(--olive-soft)}
+.tone-earth{--tbg:var(--earth-bg);--tink:var(--earth-ink);--tacc:var(--earth-acc);--tsoft:var(--earth-soft)}
+.tone-mustard{--tbg:var(--mustard-bg);--tink:var(--mustard-ink);--tacc:var(--mustard-acc);--tsoft:var(--mustard-soft)}
+.tone-sand{--tbg:var(--sand-bg);--tink:var(--sand-ink);--tacc:var(--sand-acc);--tsoft:var(--sand-soft)}
+.tone-rust{--tbg:var(--rust-bg);--tink:var(--rust-ink);--tacc:var(--rust-acc);--tsoft:var(--rust-soft)}
+.tone-moss{--tbg:var(--moss-bg);--tink:var(--moss-ink);--tacc:var(--moss-acc);--tsoft:var(--moss-soft)}
+
+html{-webkit-text-size-adjust:100%;direction:rtl}
+body{margin:0}
+*,*::before,*::after{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:12px}
+
+/* svg art classes */
+.f1{fill:var(--tink)} .f2{fill:var(--tacc)} .f3{fill:var(--tsoft)} .f0{fill:var(--tbg)}
+.s1{fill:none;stroke:var(--tink);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.s2{fill:none;stroke:var(--tacc);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:18px 60px}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--head);backdrop-filter:saturate(160%) blur(18px);-webkit-backdrop-filter:saturate(160%) blur(18px);border-bottom:1px solid transparent;transition:border-color .3s}
+.top.scrolled{border-bottom-color:var(--line)}
+.top-in{max-width:1120px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.unit{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-size:17px}
+.colors{display:inline-flex;width:22px;height:14px;border-radius:3px;overflow:hidden;flex-shrink:0}
+.colors i{flex:1}
+.colors i:first-child{background:var(--brown)} .colors i:last-child{background:var(--yellow)}
+.count{font-size:13px;font-weight:700;color:var(--ink-2);background:var(--fill);border-radius:999px;padding:4px 12px;white-space:nowrap;font-variant-numeric:tabular-nums}
+
+.greet{font-size:15px;color:var(--ink-2);font-weight:500;margin:8px 0 2px}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(38px,8vw,60px);letter-spacing:-.5px;line-height:1.02;margin:0 0 22px;text-wrap:balance}
+
+.search{display:flex;align-items:center;gap:10px;background:var(--fill);border-radius:14px;padding:0 14px;height:48px;margin-bottom:26px;transition:background .2s,box-shadow .2s}
+.search:focus-within{background:var(--card);box-shadow:0 0 0 1px var(--line)}
+.search svg{flex-shrink:0;color:var(--ink-3)}
+.search input{flex:1;border:0;background:none;font:inherit;font-size:16px;color:var(--ink);outline:none;min-width:0}
+.search input::placeholder{color:var(--ink-3)}
+.clear{width:22px;height:22px;border-radius:50%;background:var(--clear);color:var(--bg);display:none;align-items:center;justify-content:center;font-size:12px;line-height:1}
+.search.has .clear{display:flex}
+
+.feat{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px 8px;padding:4px 20px 16px;scrollbar-width:none}
+.feat::-webkit-scrollbar{display:none}
+.fcard{position:relative;flex:0 0 min(86%,500px);height:clamp(300px,62vw,370px);border-radius:26px;overflow:hidden;scroll-snap-align:center;text-align:right;background:var(--tbg);color:var(--tink);transition:transform .35s var(--ease)}
+.fcard:active{transform:scale(.97)}
+.art{position:absolute;inset:0;width:100%;height:100%}
+.fcard .txt{position:absolute;top:22px;right:22px;left:22px}
+.fcard .art{top:auto;bottom:0;height:46%}
+.k{font-size:13px;font-weight:700;letter-spacing:.3px;opacity:.75}
+.fcard .n{font-family:var(--f-display);font-size:clamp(28px,6vw,36px);line-height:1.05;margin-top:4px;text-wrap:balance}
+.fcard .d{font-size:15px;margin-top:8px;max-width:300px;opacity:.88;line-height:1.45}
+.dots{display:flex;justify-content:center;gap:6px;margin-bottom:26px}
+.dots i{width:6px;height:6px;border-radius:3px;background:var(--line);transition:width .3s var(--ease),background .3s}
+.dots i.on{width:18px;background:var(--ink-3)}
+
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;margin:0 0 12px}
+.sec-h h2{font-family:var(--f-display);font-weight:400;font-size:25px;margin:0}
+.recent{display:flex;gap:16px;overflow-x:auto;padding-bottom:6px;margin-bottom:28px;scrollbar-width:none}
+.recent::-webkit-scrollbar{display:none}
+.rc{flex:0 0 auto;width:76px;text-align:center}
+.rc .th{position:relative;width:76px;height:76px;border-radius:20px;overflow:hidden;background:var(--tbg);transition:transform .25s var(--ease)}
+.rc:active .th{transform:scale(.93)}
+.rc span{display:block;font-size:12px;color:var(--ink-2);margin-top:6px;line-height:1.25}
+
+.seg{display:inline-flex;background:var(--fill);border-radius:11px;padding:3px;margin-bottom:18px;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.seg::-webkit-scrollbar{display:none}
+.seg button{padding:7px 16px;border-radius:9px;font-size:15px;font-weight:600;color:var(--ink-2);white-space:nowrap;transition:color .2s}
+.seg button.on{color:var(--ink);background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tile{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;max-width:100%;text-align:right;background:var(--tbg);color:var(--tink);transition:transform .3s var(--ease),box-shadow .3s}
+.tile.wide{grid-column:span 2;aspect-ratio:8/5}
+@media(min-width:760px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.tile.wide{aspect-ratio:auto}}
+@media(hover:hover){.tile:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(30,32,20,.14)}}
+.tile:active{transform:scale(.97)}
+.tile .txt{position:absolute;top:16px;right:16px;left:16px}
+.tile .n{font-family:var(--f-display);font-size:clamp(18px,4.4vw,22px);line-height:1.12;margin-top:3px;text-wrap:balance}
+.tile.wide .n{font-size:clamp(21px,5vw,27px)}
+.soon{position:absolute;bottom:12px;right:12px;font-size:12px;font-weight:700;background:var(--tsoft);color:var(--tink);border-radius:999px;padding:3px 10px}
+.empty{grid-column:1/-1;text-align:center;padding:50px 10px;color:var(--ink-2);font-size:15px}
+.empty b{display:block;color:var(--ink);font-size:18px;font-weight:800;margin-bottom:4px}
+
+.foot{text-align:center;color:var(--ink-3);font-size:13px;margin-top:44px}
+
+.rise{animation:rise .7s var(--ease) both}
+@keyframes rise{from{opacity:.001;transform:translateY(14px)}}
+
+.scrim{position:fixed;inset:0;background:var(--scrim);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .35s;z-index:50}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;z-index:60;left:0;right:0;bottom:0;max-height:94vh;background:var(--card);border-radius:26px 26px 0 0;overflow:hidden auto;transform:translateY(105%);transition:transform .5s var(--ease);padding-bottom:env(safe-area-inset-bottom,0px)}
+.sheet.on{transform:none}
+@media(min-width:760px){
+  .sheet{left:50%;right:auto;bottom:auto;top:50%;width:540px;border-radius:28px;transform:translate(-50%,-44%) scale(.94);opacity:0;pointer-events:none;transition:transform .45s var(--ease),opacity .3s}
+  .sheet.on{transform:translate(-50%,-50%);opacity:1;pointer-events:auto}
+}
+.s-img{position:relative;height:min(40vh,300px);background:var(--tbg);color:var(--tink)}
+.x{position:absolute;top:14px;left:14px;width:34px;height:34px;border-radius:50%;background:var(--tsoft);color:var(--tink);display:flex;align-items:center;justify-content:center;z-index:2}
+.s-body{padding:20px 24px 26px;display:grid;gap:0}
+.s-k{font-size:13px;font-weight:700;color:var(--ink-2)}
+.s-n{font-family:var(--f-display);font-size:30px;line-height:1.08;margin:4px 0 10px}
+.s-d{font-size:16px;line-height:1.6;color:var(--ink-2);margin:0 0 22px;max-width:60ch}
+.open{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:54px;border-radius:16px;font-size:17px;font-weight:800;text-decoration:none;background:var(--tbg);color:var(--tink);transition:transform .2s var(--ease),filter .2s}
+.open:active{transform:scale(.98)}
+@media(hover:hover){.open:hover{filter:brightness(.96)}}
+.open[aria-disabled="true"]{opacity:.55;pointer-events:none}
+.copy{display:block;margin:14px auto 0;font-size:15px;font-weight:600;color:var(--link);padding:6px 10px}
+.copy[hidden]{display:none}
+.toast{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom,0px));left:50%;transform:translate(-50%,20px);background:var(--toast-bg);color:var(--toast-ink);font-size:14px;font-weight:600;padding:10px 18px;border-radius:999px;opacity:0;transition:opacity .3s,transform .3s var(--ease);z-index:80;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+.top-end{display:flex;align-items:center;gap:8px}
+.install{font-size:13px;font-weight:800;background:var(--brown);color:var(--bg);border-radius:999px;padding:5px 14px;white-space:nowrap}
+.install[hidden]{display:none}
+.hint{display:flex;align-items:flex-start;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:20px;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.hint[hidden]{display:none}
+.hint b{color:var(--ink)}
+.hint .ic{flex-shrink:0;width:38px;height:38px;border-radius:10px;overflow:hidden}
+.hint .ic img{width:100%;height:100%}
+.hint p{margin:0;flex:1;min-width:0}
+.hint .share{display:inline-block;vertical-align:-3px;color:var(--link)}
+.hint .hx{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--fill);color:var(--ink-2);display:flex;align-items:center;justify-content:center;font-size:12px}
+@media (display-mode: standalone){ .top{padding-top:0} }
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+
+<header class="top" id="top">
+  <div class="top-in">
+    <div class="unit"><span class="colors" aria-hidden="true"><i></i><i></i></span>בא"ח גולני</div>
+    <div class="top-end"><button class="install" id="install" type="button" hidden>התקנת האפליקציה</button><div class="count" id="count"></div></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hint" id="iosHint" hidden>
+    <div class="ic"><img src="icons/apple-touch-icon.png" alt=""></div>
+    <p><b>להתקנה באייפון:</b> לוחצים על כפתור השיתוף
+      <svg class="share" width="16" height="18" viewBox="0 0 16 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-label="שיתוף"><path d="M8 13V1M4 5l4-4 4 4M3 9H1v10h14V9h-2"/></svg>
+      בתחתית ספארי, ואז על <b>"הוסף למסך הבית"</b>.</p>
+    <button class="hx" id="hintX" type="button" aria-label="סגירת ההנחיה">✕</button>
+  </div>
+  <div class="rise">
+    <div class="greet" id="greet"></div>
+    <h1>מה פותחים היום?</h1>
+  </div>
+
+  <label class="search rise" id="searchBox" style="animation-delay:.06s">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="חיפוש כלי, נושא או מחזור" autocomplete="off" aria-label="חיפוש כלי">
+    <button class="clear" id="clear" type="button" aria-label="ניקוי חיפוש">✕</button>
+  </label>
+
+  <section id="featWrap" class="rise" style="animation-delay:.12s" aria-label="כלים נבחרים">
+    <div class="feat" id="feat"></div>
+    <div class="dots" id="dots"></div>
+  </section>
+
+  <section id="recentWrap" hidden aria-label="נפתחו לאחרונה">
+    <div class="sec-h"><h2>נפתחו לאחרונה</h2></div>
+    <div class="recent" id="recent"></div>
+  </section>
+
+  <section aria-label="כל הכלים">
+    <div class="sec-h"><h2 id="gridTitle">כל הכלים</h2></div>
+    <div class="seg" id="seg" role="tablist"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <div class="foot">בסיס האימונים של חטיבת גולני · זרוע היבשה</div>
+</main>
+
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sN">
+  <div class="s-img" id="sImg">
+    <button class="x" id="close" type="button" aria-label="סגירה">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <div id="sArt"></div>
+  </div>
+  <div class="s-body">
+    <div class="s-k" id="sK"></div>
+    <div class="s-n" id="sN"></div>
+    <p class="s-d" id="sD"></p>
+    <a class="open" id="sOpen" target="_blank" rel="noopener">פתח את הכלי</a>
+    <button class="copy" id="sCopy" type="button">העתק קישור</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ===================================================================
+   הוספת כלי: מעתיקים שורה ומעדכנים.
+   url  — קישור לכלי. השאירו "" אם הכלי עוד לא קיים (יוצג "בקרוב").
+   art  — target | calendar | topo | shield | squad | checklist | flag | exam | catalog | compass
+   tone — olive | earth | mustard | sand | rust | moss
+   featured:true — מופיע בקרוסלה העליונה
+   =================================================================== */
+const TOOLS = [
+  { id:"magad",    name:"לוח מג\"ד בא\"ח",          cat:"פיקוד וניהול", url:"", art:"compass",   tone:"earth",   featured:true,
+    desc:"לוח בקרה למג\"ד: שעון פעילות, גאנט ביקורות, מצב בטיחות, קליעה ומחזורים פעילים במבט אחד." },
+  { id:"luz",      name:"לו\"ז אימונים שבועי",       cat:"אימונים",      url:"", art:"calendar",  tone:"olive",   featured:true,
+    desc:"תכנית האימונים השבועית לפי פלוגות: מטווחים, שטח, שיעורים והכנות לתרגילים." },
+  { id:"kalia",    name:"מעקב קליעה",              cat:"אימונים",      url:"", art:"target",    tone:"mustard", featured:true,
+    desc:"רישום תוצאות מטווחים לפי חניך ומחלקה, ומעקב אחר עמידה בתנאי הקליעה של המסלול." },
+  { id:"kshirut",  name:"כשירויות חניכים",          cat:"אימונים",      url:"", art:"checklist", tone:"moss",
+    desc:"מעקב אחר הכשירויות של כל חניך לאורך המסלול: מקצועות, מסעות, בחנים והסמכות." },
+  { id:"shetach",  name:"תיק שטחי אימונים",         cat:"אימונים",      url:"", art:"topo",      tone:"sand",
+    desc:"מפות, נקודות ציון ונהלים לשטחי האימונים של הבא\"ח." },
+  { id:"betihut",  name:"בטיחות ותחקירים",          cat:"פיקוד וניהול", url:"", art:"shield",    tone:"rust",
+    desc:"פקודות בטיחות לפעילות, רישום אירועים ותחקירים, ומעקב אחר סגירת לקחים." },
+  { id:"mefiot",   name:"משימות מ\"פיות",            cat:"פיקוד וניהול", url:"", art:"squad",     tone:"earth",
+    desc:"ריכוז המשימות הפתוחות של מפקדי הפלוגות ומעקב אחר ביצוען." },
+  { id:"segel",    name:"הכשרת סגל",               cat:"סגל והדרכה",   url:"", art:"squad",     tone:"olive",
+    desc:"תכנית ההכשרה של מפקדים ומדריכים לפני קליטת מחזור, כולל מעקב השלמה." },
+  { id:"goals",    name:"בונה מטרות הדרכה",         cat:"כלים משותפים", url:"https://bethaseferlehadracha-cell.github.io/myru-/",  art:"flag",    tone:"moss",
+    desc:"ניסוח מטרת הדרכה מקצועית שלב אחר שלב, לפי הכללים בתיק המדריך. כלי של בית הספר להדרכה." },
+  { id:"tests",    name:"סדנת כתיבת מבחנים",        cat:"כלים משותפים", url:"https://bethaseferlehadracha-cell.github.io/macjig/", art:"exam",    tone:"sand",
+    desc:"מדריך לבניית מבחן עיוני בשבעה שלבים, ותשעה סוגי שאלות עם דוגמאות. כלי של בית הספר להדרכה." },
+  { id:"catalog",  name:"קטלוג הכשרות",             cat:"כלים משותפים", url:"https://bethaseferlehadracha-cell.github.io/my/",     art:"catalog", tone:"mustard",
+    desc:"קטלוג ההכשרות של בית הספר להדרכה, עם חיפוש וסינון קורסים." }
+];
+const CATS = ["הכל","פיקוד וניהול","אימונים","סגל והדרכה","כלים משותפים"];
+
+/* ===== illustrations (inline SVG, follow the tile's tone in both themes) ===== */
+const ART = {
+  target:`<circle class="f3" cx="250" cy="340" r="150"/><circle class="f0" cx="250" cy="340" r="112"/><circle class="f3" cx="250" cy="340" r="74"/><circle class="f2" cx="250" cy="340" r="36"/>
+    <circle class="f1" cx="236" cy="330" r="7"/><circle class="f1" cx="262" cy="352" r="7"/><circle class="f1" cx="300" cy="300" r="7"/><circle class="f1" cx="190" cy="390" r="7"/>`,
+  calendar:`<rect class="f3" x="70" y="230" width="290" height="230" rx="22"/><rect class="f2" x="70" y="230" width="290" height="48" rx="22"/><rect class="f2" x="70" y="256" width="290" height="22"/>
+    ${[0,1,2,3,4].map(c=>[0,1,2].map(r=>`<rect class="${(c+r*5)%4===1?'f2':'f0'}" x="${90+c*52}" y="${296+r*52}" width="40" height="40" rx="9"/>`).join("")).join("")}`,
+  topo:[150,118,88,58,30].map((r,i)=>`<ellipse class="${i===4?'f2':'s1'}" cx="${240+i*6}" cy="${360-i*4}" rx="${r*1.35}" ry="${r}" transform="rotate(-14 240 360)" opacity="${i===4?1:.55+i*.1}"/>`).join("")
+       +`<path class="s2" d="M60 470 C140 430 170 470 240 440 S340 400 400 420" stroke-dasharray="2 12"/>`,
+  shield:`<path class="f3" d="M240 220 L350 262 V350 C350 418 300 456 240 480 C180 456 130 418 130 350 V262 Z"/>
+    <path class="f2" d="M240 252 L322 284 V350 C322 400 286 430 240 450 C194 430 158 400 158 350 V284 Z"/>
+    <path class="s1" d="M196 352 l30 30 l60 -64" style="stroke-width:12;stroke:var(--tsoft)"/>`,
+  squad:[[0,0],[-1,1],[1,1],[-2,2],[0,2],[2,2]].map(([x,y],i)=>`<g transform="translate(${240+x*58} ${280+y*70})"><circle class="${i===0?'f2':'f1'}" cx="0" cy="0" r="17"/><rect class="${i===0?'f2':'f3'}" x="-24" y="22" width="48" height="36" rx="14"/></g>`).join(""),
+  checklist:`<rect class="f3" x="100" y="210" width="240" height="270" rx="22"/>
+    ${[0,1,2,3].map(i=>`<rect class="${i<3?'f2':'f0'}" x="128" y="${242+i*56}" width="30" height="30" rx="8"/>${i<3?`<path class="s1" d="M135 ${257+i*56} l7 7 l12 -14" style="stroke:var(--tsoft);stroke-width:4"/>`:""}<rect class="f0" x="174" y="${250+i*56}" width="${130-i*18}" height="14" rx="7"/>`).join("")}`,
+  flag:`<path class="f3" d="M20 500 C120 380 200 340 260 360 S380 420 420 500 Z"/><path class="f2" d="M240 360 V200" style="stroke:var(--tink);stroke-width:7"/>
+    <path class="f2" d="M243 205 L330 232 L243 262 Z"/><circle class="f1" cx="240" cy="360" r="9"/>`,
+  exam:`<rect class="f3" x="110" y="200" width="220" height="290" rx="18" transform="rotate(-5 220 345)"/>
+    ${[0,1,2,3].map(i=>`<circle class="${i===1?'f2':'s1'}" cx="150" cy="${262+i*52}" r="12" style="stroke-width:3"/><rect class="f0" x="174" y="${255+i*52}" width="${118-i*12}" height="13" rx="6"/>`).join("")}`,
+  catalog:[0,1,2,3].map(i=>`<rect class="${i===3?'f2':'f3'}" x="${90+i*14}" y="${430-i*48}" width="${250-i*28}" height="40" rx="10"/>`).join("")
+       +`<rect class="f1" x="110" y="442" width="60" height="8" rx="4" opacity=".5"/>`,
+  compass:`<circle class="f3" cx="240" cy="350" r="130"/><circle class="s1" cx="240" cy="350" r="100" style="stroke-dasharray:3 14"/>
+    <path class="f2" d="M240 250 L262 350 L240 350 Z"/><path class="f1" d="M240 250 L218 350 L240 350 Z"/><path class="f1" d="M240 450 L262 350 L218 350 Z" opacity=".35"/><circle class="f0" cx="240" cy="350" r="9"/>`
+};
+const art = t => `<svg class="art" viewBox="0 0 400 500" preserveAspectRatio="xMidYMax slice" aria-hidden="true">${ART[t.art]||""}</svg>`;
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let cat = "הכל", query = "", lastFocus = null;
+
+(function(){
+  const h = new Date().getHours();
+  const g = h < 5 ? "לילה טוב" : h < 12 ? "בוקר טוב" : h < 17 ? "צהריים טובים" : h < 21 ? "ערב טוב" : "לילה טוב";
+  const d = new Intl.DateTimeFormat("he-IL",{weekday:"long",day:"numeric",month:"long"}).format(new Date());
+  $("#greet").textContent = g + ", " + d;
+  $("#count").textContent = TOOLS.length + " כלים";
+})();
+
+function renderFeatured(){
+  const f = TOOLS.filter(t => t.featured);
+  $("#feat").innerHTML = f.map(t => `
+    <button class="fcard tone-${t.tone}" data-id="${t.id}" aria-label="${esc(t.name)}">
+      ${art(t)}
+      <div class="txt"><div class="k">${esc(t.cat)}</div><div class="n">${esc(t.name)}</div><div class="d">${esc(t.desc)}</div></div>
+      ${t.url?"":`<span class="soon">בקרוב</span>`}
+    </button>`).join("");
+  $("#dots").innerHTML = f.map((_,i)=>`<i class="${i===0?"on":""}"></i>`).join("");
+  const feat = $("#feat");
+  feat.addEventListener("scroll", () => {
+    const cards = [...feat.children]; if(!cards.length) return;
+    const mid = feat.getBoundingClientRect().left + feat.clientWidth/2;
+    let best = 0, bd = 1e9;
+    cards.forEach((c,i)=>{ const r=c.getBoundingClientRect(); const d=Math.abs(r.left+r.width/2-mid); if(d<bd){bd=d;best=i;} });
+    [...$("#dots").children].forEach((d,i)=>d.classList.toggle("on", i===best));
+  }, {passive:true});
+}
+
+function renderSeg(){
+  $("#seg").innerHTML = CATS.map(c => `<button role="tab" aria-selected="${c===cat}" class="${c===cat?"on":""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("");
+}
+
+function renderGrid(animate){
+  const q = query.trim();
+  const list = TOOLS.filter(t => (cat==="הכל" || t.cat===cat) && (!q || (t.name+" "+t.cat+" "+t.desc).includes(q)));
+  $("#gridTitle").textContent = q ? "תוצאות חיפוש" : (cat==="הכל" ? "כל הכלים" : cat);
+  if(!list.length){
+    $("#grid").innerHTML = `<div class="empty"><b>לא נמצא כלי שמתאים לחיפוש</b>נסו מילה אחרת, או חזרו לכל הכלים.</div>`;
+    return;
+  }
+  $("#grid").innerHTML = list.map((t,i) => {
+    const wide = list.length > 2 && i % 5 === 2;
+    return `<button class="tile tone-${t.tone}${wide?" wide":""}${animate?" rise":""}" data-id="${t.id}"
+      ${animate?`style="animation-delay:${.18+i*.04}s"`:""} aria-label="${esc(t.name)}">
+      ${art(t)}
+      <div class="txt"><div class="k">${esc(t.cat)}</div><div class="n">${esc(t.name)}</div></div>
+      ${t.url?"":`<span class="soon">בקרוב</span>`}
+    </button>`;
+  }).join("");
+}
+
+const RKEY = "golani_hub_recent";
+function getRecent(){ try{ return JSON.parse(localStorage.getItem(RKEY)) || []; }catch(e){ return []; } }
+function pushRecent(id){
+  try{ const r = getRecent().filter(x=>x!==id); r.unshift(id); localStorage.setItem(RKEY, JSON.stringify(r.slice(0,8))); }catch(e){}
+  renderRecent();
+}
+function renderRecent(){
+  const r = getRecent().map(id => TOOLS.find(t=>t.id===id)).filter(Boolean);
+  $("#recentWrap").hidden = !r.length || !!query.trim();
+  $("#recent").innerHTML = r.map(t => `
+    <button class="rc tone-${t.tone}" data-id="${t.id}" aria-label="${esc(t.name)}">
+      <div class="th">${art(t)}</div><span>${esc(t.name)}</span>
+    </button>`).join("");
+}
+
+function openSheet(id){
+  const t = TOOLS.find(x=>x.id===id); if(!t) return;
+  lastFocus = document.activeElement;
+  $("#sheet").className = "sheet tone-" + t.tone;
+  $("#sArt").innerHTML = art(t);
+  $("#sK").textContent = t.cat;
+  $("#sN").textContent = t.name;
+  $("#sD").textContent = t.desc;
+  const o = $("#sOpen");
+  if(t.url){ o.href = t.url; o.textContent = "פתח את הכלי"; o.removeAttribute("aria-disabled"); }
+  else { o.removeAttribute("href"); o.textContent = "הכלי בבנייה"; o.setAttribute("aria-disabled","true"); }
+  o.dataset.id = t.id;
+  $("#sCopy").hidden = !t.url; $("#sCopy").dataset.url = t.url;
+  $("#scrim").classList.add("on");
+  requestAnimationFrame(()=>$("#sheet").classList.add("on"));
+  document.body.style.overflow = "hidden";
+  setTimeout(()=>$("#close").focus({preventScroll:true}), 60);
+}
+function closeSheet(){
+  $("#scrim").classList.remove("on"); $("#sheet").classList.remove("on");
+  document.body.style.overflow = "";
+  if(lastFocus) lastFocus.focus({preventScroll:true});
+}
+function toast(msg){
+  const el = $("#toast"); el.textContent = msg; el.classList.add("on");
+  clearTimeout(el._t); el._t = setTimeout(()=>el.classList.remove("on"), 1800);
+}
+
+document.addEventListener("click", e => {
+  const card = e.target.closest(".fcard[data-id], .tile[data-id], .rc[data-id]");
+  if(card){ openSheet(card.dataset.id); return; }
+  const s = e.target.closest("#seg button");
+  if(s){ cat = s.dataset.cat; renderSeg(); renderGrid(false); }
+});
+$("#sOpen").addEventListener("click", e => { if(e.currentTarget.getAttribute("href")) pushRecent(e.currentTarget.dataset.id); });
+$("#sCopy").addEventListener("click", e => {
+  const url = e.currentTarget.dataset.url;
+  const fallback = () => {
+    const ta = document.createElement("textarea"); ta.value = url; document.body.appendChild(ta); ta.select();
+    try{ document.execCommand("copy"); toast("הקישור הועתק"); }catch(_){ toast("לא ניתן להעתיק כאן. הקישור: " + url); }
+    ta.remove();
+  };
+  try{ navigator.clipboard.writeText(url).then(()=>toast("הקישור הועתק"), fallback); }catch(err){ fallback(); }
+});
+$("#close").addEventListener("click", closeSheet);
+$("#scrim").addEventListener("click", closeSheet);
+document.addEventListener("keydown", e => { if(e.key==="Escape") closeSheet(); });
+
+const qEl = $("#q");
+qEl.addEventListener("input", () => {
+  query = qEl.value;
+  $("#searchBox").classList.toggle("has", !!query);
+  $("#featWrap").hidden = !!query.trim();
+  renderRecent(); renderGrid(false);
+});
+$("#clear").addEventListener("click", e => { e.preventDefault(); qEl.value=""; qEl.dispatchEvent(new Event("input")); qEl.focus(); });
+
+window.addEventListener("scroll", () => $("#top").classList.toggle("scrolled", window.scrollY > 60), {passive:true});
+
+renderFeatured(); renderSeg(); renderGrid(true); renderRecent();
+
+/* ===== installation as an app ===== */
+const standalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+let deferredPrompt = null;
+window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferredPrompt = e; $("#install").hidden = false; });
+$("#install").addEventListener("click", async () => {
+  if(!deferredPrompt) return;
+  deferredPrompt.prompt();
+  const r = await deferredPrompt.userChoice.catch(()=>null);
+  deferredPrompt = null; $("#install").hidden = true;
+  if(r && r.outcome === "accepted") toast("האפליקציה הותקנה");
+});
+window.addEventListener("appinstalled", () => { $("#install").hidden = true; });
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+const HKEY = "golani_hub_hint_closed";
+let hintClosed = false; try{ hintClosed = localStorage.getItem(HKEY) === "1"; }catch(e){}
+if(isIOS && !standalone && !hintClosed) $("#iosHint").hidden = false;
+$("#hintX").addEventListener("click", () => { $("#iosHint").hidden = true; try{ localStorage.setItem(HKEY,"1"); }catch(e){} });
+
+if("serviceWorker" in navigator && location.protocol === "https:"){
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(()=>{}));
+}
+</script>
+
+</body>
+</html>
